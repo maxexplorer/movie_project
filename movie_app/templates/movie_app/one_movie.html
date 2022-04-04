@@ -1,0 +1,10 @@
+{% extends 'movie_app/base.html' %}
+
+{% block title %} Information about movie - {{ movie.name }}{% endblock %}
+
+{% block content %}
+    <h2>Information about movie - {{ movie.name }}</h2>
+    <h3>Rating - {{ movie.rating }}</h3>
+    <h3>Budget - {{ movie.budget}}</h3>
+    <h3>Year of release - {{ movie.year|default:"Unknown" }}</h3>
+{% endblock %}

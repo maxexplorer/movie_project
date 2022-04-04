@@ -1,0 +1,20 @@
+{% extends 'movie_app/base.html' %}
+
+{% block title %} All movies {% endblock %}
+
+{% block content %}
+    <h2>List Movies</h2>
+    <ul>
+        {% for movie in movies %}
+            <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>, rating - {{ movie.rating }}, year - {{ movie.year|default:"Unknown" }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Average budget - {{ agg.budget__avg }}</h3>
+    <h3>Minimal rating - {{ agg.rating__min }}</h3>
+    <h3>Maximal rating - {{ agg.rating__max }}</h3>
+    <h3>Total movies - {{ total }}</h3>
+
+{% endblock %}
+
+
