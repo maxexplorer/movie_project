@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Movie, Director
+from .models import Movie, Director, Actor
 from django.db.models import QuerySet
 
 # Register your models here.
 
 admin.site.register(Director)
+admin.site.register(Actor)
 
 
 class RatingFilter(admin.SimpleListFilter):
@@ -38,6 +39,7 @@ class MovieAdmin(admin.ModelAdmin):
     actions = ['set_value', 'set_yes', 'set_no']
     search_fields = ['name']
     list_filter = ['name', 'recommend', RatingFilter]
+    filter_horizontal = ['actors']
 
     @admin.display(ordering='rating', description='Status')
     def rating_status(self, movie: Movie):
