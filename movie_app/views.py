@@ -26,16 +26,18 @@ def show_all_directors(request):
         'directors': directors
     })
 
-def show_all_actors(request):
-    actors = Actor.objects.order_by('last_name')
-    return render(request, 'movie_app/all_actors.html', {
-        'actors': actors
-    })
 
 def show_director(request, slug_director: str):
     director = get_object_or_404(Director, slug=slug_director)
     return render(request, 'movie_app/info_director.html', {
         'director': director
+    })
+
+
+def show_all_actors(request):
+    actors = Actor.objects.order_by('last_name')
+    return render(request, 'movie_app/all_actors.html', {
+        'actors': actors
     })
 
 

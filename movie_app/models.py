@@ -54,13 +54,13 @@ class Movie(models.Model):
                                  validators=[MinValueValidator(1)])
     recommend = models.CharField(max_length=1, choices=RECOMMENDATION_CHOICES, default=YES)
     slug = models.SlugField(default='', null=False, db_index=True)
-    director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True)
-    actors = models.ManyToManyField(Actor)
+    director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True, related_name='movies')
+    actors = models.ManyToManyField(Actor, related_name='actors')
 
     def get_url(self):
         return reverse('movie_detail', args=[self.slug])
 
     def __str__(self):
-        return f'{self.name} - {self.rating}% - {self.budget} - {self.year} - {self.slug}'
+        return f'{self.name} - {self.rating}% - {self.budget} - {self.year}'
 
-# from movie_app.models import Movie
+

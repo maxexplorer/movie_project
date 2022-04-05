@@ -6,5 +6,12 @@
     <h2>Firstname - {{ actor.first_name }} </h2>
     <h2>Lastname - {{ actor.last_name }}</h2>
     <h2>Gender - {{ actor.gender }}</h2>
+    <hr>
+    <h3>List movies</h3>
+    <ul>
+        {% for movie in actor.actors.all %}
+            <li><h3>{{ movie }}</h3></li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

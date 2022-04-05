@@ -5,5 +5,11 @@
 {% block content %}
     <h2>Firstname - {{ director.first_name }} </h2>
     <h2>Lastname - {{ director.last_name }}</h2>
-
+    <hr>
+    <h3>List movies</h3>
+    <ul>
+        {% for movie in director.movies.all %}
+            <li><h3>{{ movie }}</h3></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
