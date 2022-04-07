@@ -55,7 +55,7 @@ class Movie(models.Model):
     recommend = models.CharField(max_length=1, choices=RECOMMENDATION_CHOICES, default=YES)
     slug = models.SlugField(default='', null=False, db_index=True)
     director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True, related_name='movies')
-    actors = models.ManyToManyField(Actor, related_name='actors')
+    actors = models.ManyToManyField(Actor, related_name='movies')
 
     def get_url(self):
         return reverse('movie_detail', args=[self.slug])
