@@ -6,6 +6,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
+class DressingRoom(models.Model):
+    floor = models.IntegerField()
+    number = models.IntegerField()
+
+
 class Director(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
