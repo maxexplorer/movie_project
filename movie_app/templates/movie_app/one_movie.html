@@ -1,11 +1,16 @@
 {% extends 'movie_app/base.html' %}
+{% load static %}
+
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'movie_app/css/one_movie.css' %}">
+{% endblock %}
 
 {% block title %} Information about movie - {{ movie.name }}{% endblock %}
 
 {% block content %}
     <h2>Information about movie - {{ movie.name }}</h2>
     <h3>Rating - {{ movie.rating }}</h3>
-    <h3>Budget - {{ movie.budget}}</h3>
+    <h3>Budget - {{ movie.budget }}</h3>
     <h3>Year of release - {{ movie.year|default:"Unknown" }}</h3>
     <hr>
     <h3>Information about director</h3>
@@ -14,20 +19,18 @@
     <hr>
     <h3>List actors</h3>
     <ul>
-    {% for actor in movie.actors.all %}
-        <li><h3>{{ actor }}</h3></li>
-    {% endfor %}
+        {% for actor in movie.actors.all %}
+            <li><h3>{{ actor }}</h3></li>
+        {% endfor %}
     </ul>
+    <hr>
+    <form action="/done" method="post">
+        {% csrf_token %}
+        <div class="form-style">
+              {{ form }}
+        </div>
 
-    <form action="">
-        <label for="name_id">Name:</label>
-        <input type="text" name="Name" id="name_id">
-
-        <br>
-        <br>
-        <label for="feedback_id">Comments</label>
-        <textarea name="feedback" id="feedback_id" cols="30" rows="10"></textarea>
-    <button>Submit</button>
+        <button>Submit</button>
     </form>
 
 
