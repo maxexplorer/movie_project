@@ -1,3 +1,10 @@
+{% extends 'movie_app/base.html' %}
+{% load static %}
+
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'movie_app/css/done_css.css' %}">
+{% endblock %}
+
 {% block content %}
 <h3>Ваш отзыв обработан</h3>
 {% endblock %}

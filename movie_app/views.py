@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Sum, Max, Min, Count, Avg
-from .models import Movie, Director, Actor
-from .forms import FeedbackForms
+from .models import Movie, Director, Actor, Feedback
+from .forms import FeedbackForm
 
 # Create your views here.
 
@@ -18,7 +18,7 @@ def show_all_movies(request):
 
 def show_one_movie(request, slug_movie: str):
     movie = get_object_or_404(Movie, slug=slug_movie)
-    form = FeedbackForms()
+    form = FeedbackForm()
     return render(request, 'movie_app/one_movie.html', {
         'movie': movie,
         'form': form
@@ -51,5 +51,7 @@ def show_actor(request, slug_actor: str):
         'actor': actor
     })
 
+
 def done(request):
+    FeedbackForm(request.POST).save()
     return render(request, 'movie_app/done.html')

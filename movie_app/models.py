@@ -69,3 +69,8 @@ class Movie(models.Model):
         return f'{self.name} - {self.rating}% - {self.budget} - {self.year}'
 
 
+class Feedback(models.Model):
+    name = models.CharField(max_length=40)
+    feedback = models.TextField()
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], null=True)
+
